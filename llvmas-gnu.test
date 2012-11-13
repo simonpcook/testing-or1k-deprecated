@@ -1,0 +1,29 @@
+; Test Configuration for or1k llvm testing using GCC test suite
+
+[core]
+tester  = dejagnu
+printer = github
+preloaders = stdenv, githeads
+verbose = 1
+
+[test_dejagnu]
+num_tests   = 2
+siteexp     = ../../or1k_gnu/site.exp
+test_1_dir  = ../../or1k_gnu/BUILD/gccs2
+test_1_cmd  = make check-gcc
+test_1_pre  = llvmgas-
+test_1_site = ../../or1k_gnu/sitellvm.exp
+test_2_dir  = ../../or1k_gnu/BUILD/gccs2
+test_2_cmd  = make check-gcc
+test_2_pre  = llvmas-
+test_2_site = ../../or1k_gnu/sitellvmas.exp
+
+[print_github]
+wikidir     = ../wiki
+remote      = git@github.com:simonpcook/llvm-or1k-testing.wiki.git
+index       = LLVM with GNU
+key         = LLVMGNU
+description = LLVM Testing with GCC test suite
+
+[load_githeads]
+dirs = ../llvm-or1k, ../clang-or1k
